@@ -205,6 +205,12 @@ class Rimplenet {
 		 * side of the site.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-rimplenet-public.php';
+		
+		/**
+		* The class responsible for defining all actions that occur in the API-facing
+		* side of the site.
+		*/
+	   require_once plugin_dir_path( dirname( __FILE__ ) ) . 'api/class-base-api.php';
 
 		$this->loader = new Rimplenet_Loader();
 
