@@ -26,7 +26,7 @@ $UpdatePasswordResetMail = new class extends ChangePasswordMail
             'current_password'       => sanitize_text_field($req['current_password']),
             'new_password'       => sanitize_text_field($req['new_password']),
             'confirm_password'     => sanitize_text_field($req['confirm_password']),
-            'token'      => sanitize_text_field($req['token_to_reset_password']),
+            'token'      => sanitize_text_field($req['token_to_change_password']),
         ];
 
         // if ($wlt_id !== '') :
