@@ -19,9 +19,10 @@ $getCredits = new class extends RimplenetVerifyEmailMail
     {
         # ================= set fields ============
         $email  = sanitize_text_field($req['email_address']);
+        $fire_email  = sanitize_text_field($req['fire_email']);
 
         // if ($wlt_id !== '') :
-            $this->send($email);
+            $this->send($email, $fire_email);
             return new WP_REST_Response($this->response, $this->response['status_code']);
     }
 };

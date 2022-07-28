@@ -29,7 +29,10 @@ class   ChangePasswordMail extends Base
                 $passwordchange = wp_set_password($new_password, $this->prop['user_id']);
                 delete_user_meta( $this->prop['user_id'], 'token_to_change_password', $this->prop['token']);
                 $message = "Password Changed Successfully";
-                $this->success($passwordchange, $message);
+                $data['action']="change_password_successful";
+                $data['user_id']=$this->prop['user_id'];
+                $data['user_email_address']=$email;
+                $this->success($data, $message);
                 return $this->response;
             }
             $message = "Passwords do not match";
@@ -45,7 +48,7 @@ class   ChangePasswordMail extends Base
     {
         $user = get_user_meta($this->prop['user_id'] ?? 1, 'token_to_change_password');
 
-        if ($this->prop['token'] == $user) {
+        if ($this->prop['token'] == end($user)) {
             return true;
         }
 

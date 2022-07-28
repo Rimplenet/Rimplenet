@@ -30,7 +30,11 @@ class RimplenetPostPasswordResetMail extends Base
                 $passwordchange=wp_set_password($password, $this->prop['user_id']);
                 delete_user_meta($this->prop['user_id'], 'token_to_reset_password', $this->prop['token']);
                 $message="Password Changed Successfully";
-                $this->success($passwordchange, $message);
+
+                $data['action']="change_password_successful";
+                $data['user_id']=$this->prop['user_id'];
+                $data['user_email_address']=$email;
+                $this->success($data, $message);
                 return $this->response;
             }
             $message="Passwords do not match";

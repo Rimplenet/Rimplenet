@@ -38,7 +38,7 @@ trait RimplenetEmailTrait
     $to = $email;
     include(plugin_dir_path( dirname( __FILE__ ) ) . 'emails/email-templates/change-password.php');
 
-    if (wp_mail( $to, $subject, $message )) {
+    if (wp_mail($to, $subject, $message)) {
         return true;
     } else {
         return false;
@@ -61,6 +61,11 @@ trait RimplenetEmailTrait
   public function storeResetToken($user_id, $token)
   {
     return add_user_meta($user_id ?? 1, 'token_to_reset_password', $token);
+  }
+
+  public function storeChangeToken($user_id, $token)
+  {
+    return add_user_meta($user_id ?? 1, 'token_to_change_password', $token);
   }
 
   public function storeverifyToken($user_id, $token)

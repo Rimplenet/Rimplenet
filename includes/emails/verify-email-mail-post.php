@@ -20,6 +20,7 @@ class   VerifyEmailMail extends Base
         extract($this->prop);
 
         $this->prop['user_id'] = $this->getUserId('email', $email);
+        $this->prop['token']=$token;
 
         // var_dump($this->prop['user_id']);
 
@@ -29,8 +30,11 @@ class   VerifyEmailMail extends Base
 
         if ($this->checkToken()) {
             delete_user_meta( $this->prop['user_id'], 'token_to_verify_email');
-            $message = "Token Validated";
-            $this->success(true, $message);
+            $message = "Email Verified Successfully";
+            $data['action']="verify_email_verification_successful";
+            $data['user_id']=$this->prop['user_id'];
+            $data['user_email_address']=$email;
+            $this->success($data, $message);
             return $this->response;
         }
            

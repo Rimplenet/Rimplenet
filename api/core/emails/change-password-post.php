@@ -25,7 +25,7 @@ $UpdatePasswordResetMail = new class extends ChangePasswordMail
             'email'          => sanitize_text_field($req['email_address'] ?? ''),
             'current_password'       => sanitize_text_field($req['current_password']),
             'new_password'       => sanitize_text_field($req['new_password']),
-            'confirm_password'     => sanitize_text_field($req['confirm_password']),
+            'confirm_password'     => sanitize_text_field($req['confirm_new_password']),
             'token'      => sanitize_text_field($req['token_to_change_password']),
         ];
 
